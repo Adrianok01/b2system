@@ -201,23 +201,27 @@ function alterarProduto(codigo) {
         });
     });
 }
-
 function executaConsulta() {
     // Listando todos os produtos
     const method = "POST";
-    const valor1 = parseInt(document.querySelector("#campoValor1").value);
+    let valor1 = document.querySelector("#campoValor1").value;
 
-    console.log("codigo: " + valor1);
+    const campoValor = document.querySelector("#filtroConsulta").value;
+    const campoConsulta = document.querySelector("#" + campoValor);
+    const tipoCampoConsulta = campoConsulta.getAttribute("data-tipo");
+
+    console.log("campo: " + campoValor);
+    console.log("tipoCampoConsulta: " + tipoCampoConsulta);
+    console.log("valor1: " + valor1);
 
     // FIXO, MUDAR CAMPO DINAMICO, DEPOIS
     let body = {
-        campo:"id",
+        campo:campoValor,
         operador: "=",
         valor1:valor1
     }
 
-    const rota = "consultaproduto";
-    
+    const rota = "consultaproduto";    
     callApiPost(method, rota, function (data) {
         console.log("Dados da API:");
         console.log(data);
