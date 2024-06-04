@@ -204,21 +204,24 @@ function alterarProduto(codigo) {
 function executaConsulta() {
     // Listando todos os produtos
     const method = "POST";
-    let valor1 = document.querySelector("#campoValor1").value;
+    const filtroConsulta = document.querySelector("#filtroConsulta").value;
+    const valor1 = document.querySelector("#campoValor1").value;
+    const valor2 = document.querySelector("#campoValor2").value;
 
-    const campoValor = document.querySelector("#filtroConsulta").value;
-    const campoConsulta = document.querySelector("#" + campoValor);
-    const tipoCampoConsulta = campoConsulta.getAttribute("data-tipo");
+   // const campoValor = document.querySelector("#filtroConsulta").value;
+    //const campoConsulta = document.querySelector("#" + campoValor);
+   // const tipoCampoConsulta = campoConsulta.getAttribute("data-tipo");
 
-    console.log("campo: " + campoValor);
-    console.log("tipoCampoConsulta: " + tipoCampoConsulta);
-    console.log("valor1: " + valor1);
+   // console.log("campo: " + campoValor);
+   // console.log("tipoCampoConsulta: " + tipoCampoConsulta);
+   // console.log("valor1: " + valor1);
 
     // FIXO, MUDAR CAMPO DINAMICO, DEPOIS
     let body = {
-        campo:campoValor,
+        campo:filtroConsulta,
         operador: "=",
-        valor1:valor1
+        valor1:valor1,
+        valor2:valor2
     }
 
     const rota = "consultaproduto";    
